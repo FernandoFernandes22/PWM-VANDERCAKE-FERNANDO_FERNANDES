@@ -19,8 +19,100 @@ namespace VanderCake.Api.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.9")         .HasPrecision(15, 2)
+                .HasAnnotation("ProductVersion", "10.0.9")
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("VanderCake.Core.Batch", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("AdminId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("ConfirmedAtUtc")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("RequestHash")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
+
+                    b.Property<Guid>("RequestKey")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AdminId", "RequestKey")
+                        .IsUnique();
+
+                    b.ToTable("Batches");
+                });
+
+            modelBuilder.Entity("VanderCake.Core.Client", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("Active")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
+
+                    b.Property<long>("SellerId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
+
+                    b.Property<int>("VisitOrder")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SellerId", "VisitOrder");
+
+                    b.ToTable("Clients");
+                });
+
+            modelBuilder.Entity("VanderCake.Core.Order", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<decimal>("ApprovedTotal")
+                        .HasPrecision(15, 2)
                         .HasColumnType("decimal(15,2)");
+
+                    b.Property<string>("CancellationReason")
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
+
+                    b.Property<long>("ClientId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("MethodName")
                         .IsRequired()
@@ -145,14 +237,6 @@ namespace VanderCake.Api.Data.Migrations
                     b.Property<bool>("Active")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<decimal>("DailyDiscountPercent")
-                        .HasPrecision(15, 2)
-                        .HasColumnType("decimal(15,2)");
-
-                    b.Property<decimal>("DailyInterestPercent")
-                        .HasPrecision(15, 2)
-                        .HasColumnType("decimal(15,2)");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(250)
@@ -230,18 +314,6 @@ namespace VanderCake.Api.Data.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("date");
 
-                    b.Property<decimal>("Discount")
-                        .HasPrecision(15, 2)
-                        .HasColumnType("decimal(15,2)");
-
-                    b.Property<decimal>("Interest")
-                        .HasPrecision(15, 2)
-                        .HasColumnType("decimal(15,2)");
-
-                    b.Property<decimal>("PrincipalSettled")
-                        .HasPrecision(15, 2)
-                        .HasColumnType("decimal(15,2)");
-
                     b.Property<long>("ReceivableId")
                         .HasColumnType("bigint");
 
@@ -270,14 +342,6 @@ namespace VanderCake.Api.Data.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<decimal>("Amount")
-                        .HasPrecision(15, 2)
-                        .HasColumnType("decimal(15,2)");
-
-                    b.Property<decimal>("DailyDiscountPercent")
-                        .HasPrecision(15, 2)
-                        .HasColumnType("decimal(15,2)");
-
-                    b.Property<decimal>("DailyInterestPercent")
                         .HasPrecision(15, 2)
                         .HasColumnType("decimal(15,2)");
 
