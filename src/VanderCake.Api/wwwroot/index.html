@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VanderCake · Distribuidora</title><link rel="stylesheet" href="/css/app.css"></head>
+<body>
+  <section id="login-view" class="login-view">
+    <div class="welcome"><span class="eyebrow">DA VISITA À VENDA</span><h1>Boas receitas.<br>Negócios bem<br>organizados.</h1><p>Acompanhe os pedidos da sua equipe e prepare o próximo atendimento.</p><div class="cake-mark" aria-hidden="true">VC</div></div>
+    <form id="login-form" class="login-card"><a class="brand" href="/">Vander<span>Cake</span><small>DISTRIBUIDORA</small></a><h2>Bem-vindo de volta</h2><p>Entre no painel da administração.</p><label>Login<input name="login" autocomplete="username" required maxlength="100"></label><label>Senha<input name="senha" type="password" autocomplete="current-password" required maxlength="200"></label><button type="submit">Entrar no painel <span aria-hidden="true">→</span></button><p id="login-error" role="alert"></p><small>Acesso dos vendedores pelo aplicativo VanderCake.</small></form>
+  </section>
+  <div id="workspace" class="workspace" hidden>
+    <aside><a class="brand" href="/">Vander<span>Cake</span><small>DISTRIBUIDORA</small></a><p class="nav-label">OPERAÇÃO</p><nav aria-label="Menu principal">
+      <button data-view="pedidos">Pedidos <span>↗</span></button><button data-view="clientes">Clientes</button><button data-view="produtos">Produtos</button><button data-view="estoque">Estoque</button><button data-view="pagamentos">Pagamentos</button><button data-view="vendas">Vendas</button><button data-view="financeiro">Contas a receber</button>
+    </nav><div class="aside-footer"><span id="user-name"></span><button id="logout" class="quiet">Sair da conta</button><small>VanderCake · Projeto acadêmico</small></div></aside>
+    <main><header><div><span class="eyebrow">PAINEL DA DISTRIBUIDORA</span><h1 id="page-title">Pedidos</h1><p id="page-description"></p></div><div id="page-actions" class="actions"></div></header><p id="notice" role="status" hidden></p><section id="content" aria-live="polite"></section></main>
+  </div>
+  <dialog id="modal"><form id="modal-form"><div class="dialog-heading"><h2 id="modal-title"></h2><button type="button" id="modal-close" class="quiet" aria-label="Fechar">×</button></div><div id="modal-body"></div><p id="modal-error" role="alert"></p><footer><button type="button" id="modal-cancel" class="secondary">Voltar</button><button id="modal-submit" type="submit">Salvar</button></footer></form></dialog>
+  <script type="module" src="/js/app.js?v=20261026.2"></script>
+</body></html>

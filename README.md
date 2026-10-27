@@ -12,7 +12,7 @@ Esta é a raiz oficial do projeto: **C:\Users\felip\Documents\ChatGPT\VanderCake
 - `docs/`: planejamento, especificações e registro de validação.
 - `tests/`: testes de cálculo.
 - `scripts/`: execução, banco local e empacotamento.
-- `references/`: fotos e arquivo original enviados pelo professor.
+- `references/`: material local enviado pelo professor, não incluído no repositório público.
 - `outputs/`: atalhos, pacotes ZIP e prévia visual.
 - `.local/`: banco de desenvolvimento e chaves privadas locais; não compartilhar.
 
